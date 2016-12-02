@@ -1,0 +1,81 @@
+object AbonentsForm: TAbonentsForm
+  Left = 0
+  Top = 0
+  Caption = #1040#1073#1086#1085#1077#1085#1090#1099
+  ClientHeight = 613
+  ClientWidth = 331
+  Color = clBtnFace
+  Constraints.MaxHeight = 651
+  Constraints.MaxWidth = 347
+  Constraints.MinHeight = 651
+  Constraints.MinWidth = 347
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object pnl1: TPanel
+    Left = 0
+    Top = 586
+    Width = 331
+    Height = 27
+    Align = alBottom
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 0
+    ExplicitTop = 559
+    ExplicitWidth = 373
+    object BitBtn1: TBitBtn
+      Left = 263
+      Top = 1
+      Width = 67
+      Height = 25
+      Align = alRight
+      Caption = #1042#1099#1093#1086#1076
+      TabOrder = 0
+      OnClick = BitBtn1Click
+      ExplicitLeft = 296
+      ExplicitTop = 0
+    end
+  end
+  object cxgrd1: TcxGrid
+    Left = 0
+    Top = 0
+    Width = 331
+    Height = 586
+    Align = alClient
+    TabOrder = 1
+    ExplicitTop = -5
+    ExplicitWidth = 317
+    ExplicitHeight = 560
+    object cxgrdbtblvwGrid1DBTableView1: TcxGridDBTableView
+      Navigator.Visible = True
+      DataController.DataSource = DMain.IntrPhUDS
+      DataController.DetailKeyFieldNames = 'intnumber'
+      DataController.Summary.DefaultGroupSummaryItems = <>
+      DataController.Summary.FooterSummaryItems = <>
+      DataController.Summary.SummaryGroups = <>
+      object cxgrdbclmnGrid1DBTableView1intnumber: TcxGridDBColumn
+        Caption = #1048#1076#1077#1085#1090#1080#1092#1080#1082#1072#1090#1086#1088' '#1087#1086#1083#1103
+        DataBinding.FieldName = 'intnumber'
+        Width = 121
+      end
+      object cxgrdbclmnGrid1DBTableView1name: TcxGridDBColumn
+        Caption = #1048#1084#1103
+        DataBinding.FieldName = 'name'
+        PropertiesClassName = 'TcxTextEditProperties'
+        Width = 203
+      end
+    end
+    object cxgrdlvlGrid1Level1: TcxGridLevel
+      GridView = cxgrdbtblvwGrid1DBTableView1
+    end
+  end
+end

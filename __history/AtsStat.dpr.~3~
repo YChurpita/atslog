@@ -1,0 +1,18 @@
+program AtsStat;
+
+uses
+  Vcl.Forms,
+  Main in 'Main.pas' {MainForm},
+  MainDm in 'MainDm.pas' {DMain: TDataModule},
+  Abonents in 'Abonents.pas' {AbonentsForm};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TMainForm, MainForm);
+  Application.CreateForm(TDMain, DMain);
+  Application.CreateForm(TAbonentsForm, AbonentsForm);
+  Application.Run;
+end.

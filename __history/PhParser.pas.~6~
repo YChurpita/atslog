@@ -1,0 +1,93 @@
+unit PhParser;
+
+interface
+ uses
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  Vcl.StdCtrls,
+  Vcl.Buttons,
+  Vcl.ExtCtrls,
+  RegExpr,
+//  DBAccess,
+  Uni,
+ // Data.DB,
+  MemDS,
+//  UniDacVcl,
+//  UniProvider,
+  MySQLUniProvider ;
+
+  type TphoneVar=(aGor,aMgor,aMobile,aZarub) ;
+
+
+  type TphParser =class(TObject)
+  protected
+  FmobOpCode:tstringlist ;
+  FCountryCode:tstringlist ;
+
+  Frhp1: TRegExpr;
+  Frhp2: TRegExpr;
+  private
+  FthNamber:String ;
+  FphcLength:Integer ;
+  FphoneVar:TphoneVar ;
+
+  procedure ParsNamber ;
+  procedure SetFthNamber (const aVar:string) ;
+  public
+  constructor CREATE;
+  destructor  DESTROY;
+  property L_PhNamber:string read FthNamber write SetFthNamber  ;
+  property L_PhVar: TphoneVar read FphoneVar ;
+
+  end;
+
+
+implementation
+
+
+constructor TphParser.CREATE;
+begin
+  inherited;
+  FmobOpCode:=tstringlist.Create ;
+  FCountryCode:=tstringlist.Create ;
+  Frhp1:= TRegExpr.Create;
+  Frhp2:= TRegExpr.Create;
+end;
+
+destructor TphParser.DESTROY;
+begin
+  FmobOpCode.Destroy ;
+  FCountryCode.Destroy ;
+  Frhp1.Destroy;
+  Frhp2.Destroy;
+  inherited;
+end;
+
+
+procedure TphParser.ParsNamber;
+begin
+
+ Frhp1.Expression:='\{([\s]*?)"(.*?)"([\s]*?);([\s]*?)(.*?)\}' ;
+ Frhp1.Exec(FthNamber);
+  repeat
+  // Inc(CountMask);
+  until Frhp1.ExecNext=False  ;
+
+
+
+end;
+
+procedure TphParser.SetFthNamber(const aVar: string);
+begin
+   FthNamber:=aVar ;
+   FphcLength:=Length(aVar) ;
+end;
+
+end.

@@ -1,0 +1,204 @@
+unit UserList;
+
+interface
+
+uses
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Dialogs,
+  Vcl.StdCtrls,
+  Vcl.ExtCtrls,
+  Contnrs,
+  Controls,
+
+  UsrObj  ;
+
+  type  TUserList = class(TObjectList)
+
+   private
+
+
+   protected
+   procedure Put(Index: Integer; Item:TUsrObj); virtual;
+   function Get(Index: Integer): TUsrObj; virtual;
+   procedure w_OwnsObjects(at: boolean); virtual;
+
+
+  public
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    property Items[Index: Integer]:TUsrObj read Get write Put;
+    // С помощью Items можно получить доступ к объектам, хранящимся в списке.
+    // Items является свойством по умолчанию, а значит следующие две строки равносильны:
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    procedure Sort(Compare: TListSortCompare); virtual;
+    // Метод сортирует элементы списка.
+    // В функции TListSortCompare должно быть указано, как следует располагать объекты в списке:
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    function Add(Obj: TUsrObj): Integer; virtual;
+    // Добавляет новый объект в конец списка, увеличивает свойство Count на единицу и,
+    // если необходимо, выделяет память, увеличивая значение Capacity (мы рассмотрим позже это свойство).
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    procedure Insert(Index: Integer; Obj: TUsrObj); virtual;
+    // Вставляет новый объект на указанную позицию, сдвигая стоящий на этом месте элемент, а также все следующие за ним элементы.
+    // Index – позиция, на которую вставляется объект, указанный в AObject.
+    // При необходимости для нового элемента выделяется память.
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    procedure delete(Index: Integer); virtual;
+    // Отличается от Extract тем, что в качестве параметра передается не имя, а индекс.
+    // Если OwnsObjects равен true, то сразу же вызывается метод Free.
+    // Чтобы вручную освободить память, которая использовалась для хранения объекта, достаточно уменьшить параметр Capacity.
+    // Индексы элементов и Count изменяются так же, как и у Extract.
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    procedure Clear; virtual;
+    // Этот метод удаляет все элементы из списка, освобождает память,
+    // используемую для хранения объектов, а также присваивает свойству Capacity значение 0.
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    function Getitems(Index: Integer): TUsrObj; virtual;
+    // Ищет по индексу возвращает объект
+    procedure setitems(Index: Integer; const Value: TUsrObj); virtual;
+    // Записать объект по определенному индексу
+    function first: TUsrObj; virtual; // Возвращает первый элемент списка.
+    function last: TUsrObj; virtual; // Возвращает последний элемент списка.
+    function IndexOf(AObject: TUsrObj): Integer; virtual;
+    procedure Assign(Dest: TUserList);
+  //  procedure ResizeMessageWidth(const aRes:integer);
+    CONSTRUCTOR CREATE;
+    destructor destroy;
+    procedure  AddCall(const aval:TUsrObj);
+    function GetUserName(nVal:string):TUsrObj ;
+  end;
+implementation
+//------------------------------------------------------------------------------
+constructor TUserList.CREATE;
+begin
+  inherited ;
+end;
+//------------------------------------------------------------------------------
+destructor TUserList.destroy;
+begin
+  inherited  ;
+end;
+//------------------------------------------------------------------------------
+procedure  TUserList.Put(Index: Integer; Item: TUsrObj);
+begin
+  if Item is TUsrObj then
+    inherited Items[Index] := Item;
+end;
+//------------------------------------------------------------------------------
+function  TUserList.Get(Index: Integer): TUsrObj;
+begin
+  if Count - 1 >= Index then // проверка на правильность Index-а,иначе
+    Result := TUsrObj(inherited Items[Index]) // получим исключение
+  else
+    Result := nil;
+end;
+//------------------------------------------------------------------------------
+procedure TUserList.w_OwnsObjects(at: boolean);
+begin
+  inherited OwnsObjects := at;
+end;
+
+
+//------------------------------------------------------------------------------
+procedure  TUserList.Sort(Compare: TListSortCompare);
+begin
+  inherited Sort(Compare);
+end;
+//------------------------------------------------------------------------------
+function TUserList.Add(Obj: TUsrObj): Integer;
+begin
+  if Obj is TUsrObj  then
+    Result := inherited Add(Obj);
+end;
+//------------------------------------------------------------------------------
+procedure  TUserList.Insert(Index: Integer; Obj: TUsrObj);
+begin
+  inherited Insert(Index, Obj);
+end;
+//------------------------------------------------------------------------------
+procedure  TUserList.delete(Index: Integer);
+begin
+  inherited delete(Index) ;
+end;
+// ------------------------------------------------------------------------------
+procedure  TUserList.Clear;
+begin
+  inherited Clear;
+end;
+//------------------------------------------------------------------------------
+function  TUserList.Getitems(Index: Integer): TUsrObj;
+begin
+  // Result :=  (inherited GetItem(index) as TWriterFrame);
+  if Count - 1 >= Index then // проверка на правильность Index-а,иначе
+    Result := TUsrObj(inherited Items[Index]) // получим исключение
+  else
+    Result := nil;
+end;
+//------------------------------------------------------------------------------
+procedure  TUserList.setitems(Index: Integer; const Value: TUsrObj);
+begin
+  inherited SetItem(Index, Value);
+end;
+//------------------------------------------------------------------------------
+function  TUserList.first: TUsrObj; // возвращаем первую позицию
+begin
+  Result := TUsrObj(inherited first);
+end;
+//------------------------------------------------------------------------------
+ function  TUserList.last: TUsrObj; // возвращаем последнюю позицию
+begin
+  Result := TUsrObj(inherited last);
+end;
+//------------------------------------------------------------------------------
+function  TUserList.IndexOf(AObject: TUsrObj): Integer;
+begin
+  Result := inherited IndexOf(AObject);
+end;
+//------------------------------------------------------------------------------
+procedure TUserList.AddCall(const aval:TUsrObj);
+var
+n:integer ;
+begin
+   n := Add(TUsrObj.CREATE);
+        items[n].Assign(aval);
+end;
+
+procedure TUserList.Assign(Dest: TUserList);
+var
+I:integer ;
+begin
+ I:=0 ;
+    if (Dest is TUserList) then
+      begin
+        Clear ;
+        for I := 0 to TUserList(Dest).Count -1 do
+          begin
+            AddCall(TUserList(Dest).Items[I]) ;
+          end;
+      end
+    else
+    inherited Assign(Dest);
+end;
+
+function TUserList.GetUserName(nVal:string):TUsrObj ;
+var
+i:Integer ;
+begin
+   for I := 0 to Count-1 do
+     begin
+      if items[I].L_UsrName =nVal  then
+        begin
+          result:=  items[I] ;
+          Break ;
+        end ;
+
+     end;
+end;
+
+//------------------------------------------------------------------------------
+
+
+end.

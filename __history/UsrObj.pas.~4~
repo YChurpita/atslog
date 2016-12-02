@@ -1,0 +1,42 @@
+unit UsrObj;
+
+interface
+  uses
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Dialogs,
+  Vcl.StdCtrls,
+  Vcl.ExtCtrls,
+  CallObj  ;
+
+  Type TUsrObj= class (tobject)
+  private
+  FusrName:string ;
+  procedure setUsrName(const val: string) ;
+  function  getUserName:string ;
+  public
+  property L_UsrName:string read  getUserName write    setUsrName ;
+
+
+  end;
+
+
+
+implementation
+
+{ TUsrObj }
+
+function TUsrObj.getUserName: string;
+begin
+ result:=FusrName ;
+end;
+
+procedure TUsrObj.setUsrName(const val: string);
+begin
+  FusrName:=val ;
+end;
+
+end.

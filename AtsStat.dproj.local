@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.562,=G:\AtsLog\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.163,=G:\AtsLog\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.983,G:\AtsLog\MainType.pas=G:\AtsLog\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.758,D:\AtsLog\Country.pas=D:\AtsLog\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.492,=G:\AtsLog\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.275,G:\AtsLog\Unit1.pas=G:\AtsLog\CallList.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.671,G:\AtsLog\Unit1.pas=G:\AtsLog\CallObj.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.175,=G:\AtsLog\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.879,G:\AtsLog\Unit1.pas=G:\AtsLog\UsrObj.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.094,=D:\project\AtsLog\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.039,=D:\project\AtsLog\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.370,G:\AtsLog\FormSearchCall.pas=G:\AtsLog\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.492,D:\project\AtsLog\Unit1.pas=D:\project\AtsLog\MainDm.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.628,D:\project\AtsLog\Unit1.pas=D:\project\AtsLog\Abonents.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.492,D:\project\AtsLog\Unit1.dfm=D:\project\AtsLog\MainDm.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.628,D:\project\AtsLog\Unit1.dfm=D:\project\AtsLog\Abonents.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.962,G:\AtsLog\UserFrame.pas=G:\AtsLog\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.027,D:\AtsLog\ExtLine.pas=D:\AtsLog\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.762,=D:\AtsLog\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.901,D:\AtsLog\Unit1.pas=D:\AtsLog\Ufunct.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.359,=D:\AtsLog\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.301,=D:\AtsLog\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.989,D:\AtsLog\Unit1.pas=D:\AtsLog\PhParser.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.027,D:\AtsLog\ExtLine.dfm=D:\AtsLog\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.909,C:\Users\YaroslavPC\Documents\Embarcadero\Studio\Projects\Project1.dproj=D:\project\AtsLog\AtsStat.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.370,G:\AtsLog\FormSearchCall.dfm=G:\AtsLog\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.185,G:\AtsLog\UserList.pas=G:\AtsLog\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.019,=G:\AtsLog\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.758,D:\AtsLog\Country.dfm=D:\AtsLog\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.443,=G:\AtsLog\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.192,=G:\AtsLog\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.963,G:\AtsLog\UserFrame.dfm=G:\AtsLog\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.964,C:\Users\YaroslavPC\Documents\Embarcadero\Studio\Projects\Unit1.dfm=D:\project\AtsLog\Main.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.459,=D:\AtsLog\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.180,=C:\Users\YaroslavPC\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.964,C:\Users\YaroslavPC\Documents\Embarcadero\Studio\Projects\Unit1.pas=D:\project\AtsLog\Main.pas</Transaction>
+  </Transactions>
+</BorlandProject>

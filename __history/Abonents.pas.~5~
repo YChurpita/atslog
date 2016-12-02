@@ -1,0 +1,77 @@
+unit Abonents;
+
+interface
+
+uses
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  Vcl.StdCtrls,
+  Vcl.Buttons,
+  Vcl.ExtCtrls,
+  MainDm, cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
+  cxStyles, dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinBlueprint,
+  dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
+  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinPumpkin, dxSkinSeven,
+  dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus, dxSkinSilver,
+  dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008, dxSkinTheAsphaltWorld,
+  dxSkinsDefaultPainters, dxSkinValentine, dxSkinVS2010, dxSkinWhiteprint,
+  dxSkinXmas2008Blue, dxSkinscxPCPainter, cxCustomData, cxFilter, cxData,
+  cxDataStorage, cxEdit, Data.DB, cxDBData, cxTextEdit, cxGridCustomTableView,
+  cxGridTableView, cxGridDBTableView, cxGridLevel, cxClasses, cxGridCustomView,
+  cxGrid;
+
+type
+  TAbonentsForm = class(TForm)
+    pnl1: TPanel;
+    BitBtn1: TBitBtn;
+    cxgrdbtblvwGrid1DBTableView1: TcxGridDBTableView;
+    cxgrdlvlGrid1Level1: TcxGridLevel;
+    cxgrd1: TcxGrid;
+    cxgrdbclmnGrid1DBTableView1intnumber: TcxGridDBColumn;
+    cxgrdbclmnGrid1DBTableView1name: TcxGridDBColumn;
+    cxstylrpstry1: TcxStyleRepository;
+    cxStyle1: TcxStyle;
+    cxgrdtblvwstylshtGridTableViewStyleSheetWindowsStandard: TcxGridTableViewStyleSheet;
+    cxstyl1: TcxStyle;
+    cxstyl2: TcxStyle;
+    cxstyl3: TcxStyle;
+    cxstyl4: TcxStyle;
+    cxstyl5: TcxStyle;
+    cxstyl6: TcxStyle;
+    cxstyl7: TcxStyle;
+    cxstyl8: TcxStyle;
+    cxstyl9: TcxStyle;
+    cxstyl10: TcxStyle;
+    cxstyl11: TcxStyle;
+    procedure BitBtn1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  AbonentsForm: TAbonentsForm;
+
+implementation
+
+{$R *.dfm}
+
+procedure TAbonentsForm.BitBtn1Click(Sender: TObject);
+begin
+ Close ;
+end;
+
+end.

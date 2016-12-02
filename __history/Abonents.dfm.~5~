@@ -1,0 +1,76 @@
+object AbonentsForm: TAbonentsForm
+  Left = 0
+  Top = 0
+  Caption = #1040#1073#1086#1085#1077#1085#1090#1099
+  ClientHeight = 587
+  ClientWidth = 317
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object pnl1: TPanel
+    Left = 0
+    Top = 560
+    Width = 317
+    Height = 27
+    Align = alBottom
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 0
+    ExplicitTop = 559
+    ExplicitWidth = 373
+    object BitBtn1: TBitBtn
+      Left = 249
+      Top = 1
+      Width = 67
+      Height = 25
+      Align = alRight
+      Caption = #1042#1099#1093#1086#1076
+      TabOrder = 0
+      OnClick = BitBtn1Click
+      ExplicitLeft = 296
+      ExplicitTop = 0
+    end
+  end
+  object cxgrd1: TcxGrid
+    Left = 0
+    Top = 0
+    Width = 317
+    Height = 560
+    Align = alClient
+    TabOrder = 1
+    ExplicitLeft = 40
+    ExplicitTop = 24
+    ExplicitWidth = 369
+    ExplicitHeight = 505
+    object cxgrdbtblvwGrid1DBTableView1: TcxGridDBTableView
+      Navigator.Visible = True
+      DataController.DataSource = DMain.IntrPhUDS
+      DataController.DetailKeyFieldNames = 'intnumber'
+      DataController.Summary.DefaultGroupSummaryItems = <>
+      DataController.Summary.FooterSummaryItems = <>
+      DataController.Summary.SummaryGroups = <>
+      object cxgrdbclmnGrid1DBTableView1intnumber: TcxGridDBColumn
+        DataBinding.FieldName = 'intnumber'
+        Width = 87
+      end
+      object cxgrdbclmnGrid1DBTableView1name: TcxGridDBColumn
+        DataBinding.FieldName = 'name'
+        PropertiesClassName = 'TcxTextEditProperties'
+        Width = 203
+      end
+    end
+    object cxgrdlvlGrid1Level1: TcxGridLevel
+      GridView = cxgrdbtblvwGrid1DBTableView1
+    end
+  end
+end

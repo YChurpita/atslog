@@ -1,0 +1,22 @@
+object FrameUsr: TFrameUsr
+  Left = 0
+  Top = 0
+  Width = 589
+  Height = 426
+  TabOrder = 0
+  object grp1: TGroupBox
+    Left = 24
+    Top = 176
+    Width = 537
+    Height = 217
+    Caption = 'grp1'
+    TabOrder = 0
+    object strngrd1: TStringGrid
+      Left = 0
+      Top = 48
+      Width = 521
+      Height = 166
+      TabOrder = 0
+    end
+  end
+end

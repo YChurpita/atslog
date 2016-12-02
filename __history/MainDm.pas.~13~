@@ -1,0 +1,100 @@
+unit MainDm;
+
+interface
+
+uses
+  System.SysUtils,
+  System.Classes,
+  DBAccess,
+  Uni,
+  Data.DB,
+  MemDS,
+  UniDacVcl,
+  UniProvider,
+  MySQLUniProvider;
+
+type
+  TDMain = class(TDataModule)
+    UniConnection1: TUniConnection;
+    MySQLUniProvider1: TMySQLUniProvider;
+    UniConnectDialog1: TUniConnectDialog;
+    CalsUQ: TUniQuery;
+    CallsUTrRead: TUniTransaction;
+    CallsUDs: TUniDataSource;
+    CallsUTrWrite: TUniTransaction;
+    CountryUQ: TUniQuery;
+    CountryUniTrRead: TUniTransaction;
+    Countryds: TUniDataSource;
+    CountryUniTrWrite: TUniTransaction;
+    ExtLinesUQ: TUniQuery;
+    ExtLinesUTrRead: TUniTransaction;
+    ExtLinesUDS: TUniDataSource;
+    ExtLinesUTWrite: TUniTransaction;
+    IntrPhUQ: TUniQuery;
+    IntrPhUTrRead: TUniTransaction;
+    IntrPhUDS: TUniDataSource;
+    IntrPhUTrWrite: TUniTransaction;
+    TownsUQ: TUniQuery;
+    TownsUiTrRead: TUniTransaction;
+    TownsUDS: TUniDataSource;
+    TownsUTrWrite: TUniTransaction;
+    UsersUQ: TUniQuery;
+    UsersUTrRead: TUniTransaction;
+    UsersUDS: TUniDataSource;
+    UsersUTrWrite: TUniTransaction;
+    procedure UniConnection1BeforeConnect(Sender: TObject);
+    procedure UniConnection1BeforeDisconnect(Sender: TObject);
+  private
+
+    { Private declarations }
+  public
+    procedure OpenQuary;
+    procedure CloseQuary;
+
+
+    { Public declarations }
+  end;
+
+var
+  DMain: TDMain;
+
+implementation
+ uses main ;
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+procedure TDMain.CloseQuary;
+begin
+    CalsUQ.Active:=false ;
+    CountryUQ.Active:=false ;
+    ExtLinesUQ.Active:=false ;
+    IntrPhUQ.Active:=false ;
+    TownsUQ.Active:=false ;
+    UsersUQ.Active:=false ;
+end;
+
+procedure TDMain.OpenQuary;
+begin
+    CalsUQ.Active:=True ;
+    CountryUQ.Active:=True ;
+    ExtLinesUQ.Active:=True ;
+    IntrPhUQ.Active:=True ;
+    TownsUQ.Active:=True ;
+    UsersUQ.Active:=True ;
+
+end;
+
+procedure TDMain.UniConnection1BeforeConnect(Sender: TObject);
+begin
+  MainForm.StatusBar1.Panels[0].Text:='Связь с сервером установлена!' ;
+  OpenQuary;
+end;
+
+procedure TDMain.UniConnection1BeforeDisconnect(Sender: TObject);
+begin
+  MainForm.StatusBar1.Panels[0].Text:='Связь с сервером разорвана!' ;
+  CloseQuary;
+end;
+
+end.

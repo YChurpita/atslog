@@ -1,0 +1,92 @@
+unit UserFrame;
+
+interface
+
+uses
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  UsrObj, Vcl.Grids, Vcl.StdCtrls, MainType;
+
+type
+  TFrameUsr = class(TFrame)
+    grp1: TGroupBox;
+    strngrd1: TStringGrid;
+    lbl1: TLabel;
+  private
+  FusrObj:TUsrObj ;
+
+  procedure SetFusrObj(aval:TUsrObj) ;
+    { Private declarations }
+  public
+
+  CONSTRUCTOR CREATE;
+  destructor destroy;
+  property L_FusrObj:TUsrObj read FusrObj write SetFusrObj ;
+    { Public declarations }
+  end;
+
+implementation
+
+{$R *.dfm}
+
+constructor  TFrameUsr.CREATE;
+begin
+// inherited;
+
+end;
+
+destructor  TFrameUsr.DESTROY;
+begin
+
+ // inherited;
+end;
+
+
+
+procedure TFrameUsr.SetFusrObj(aval: TUsrObj);
+var
+L:Integer ;
+
+function GetTypeCall(aval: TphoneVar):string;
+begin
+  case aval of
+    aGor: Result:='Городской';
+    aMgor: Result:='Междугородний';
+    aMobile: Result:='Мобильный';
+    aZarub:  Result:='Зарубежный';
+    else result:='Неопределено' ;
+  end;
+
+
+end;
+
+
+begin
+   FusrObj:=aval ;
+   FusrObj.L_UsrName ;
+
+   strngrd1.Cells[0,0]:='Линия.';
+   strngrd1.Cells[1,0]:='Номер телелфона.';
+   strngrd1.Cells[2,0]:='Время в сикундах';
+   strngrd1.Cells[3,0]:='Тип звонка';
+
+    For L := 0 to FusrObj.L_CallList.Count -1 do
+     begin
+       strngrd1.Cells[0,1+L]:= IntToStr( FusrObj.L_CallList.Items[L].L_IntLine) ;
+       strngrd1.Cells[1,1+L]:= FusrObj.L_CallList.Items[L].L_Phone ;
+       strngrd1.Cells[2,1+L]:= IntToStr(FusrObj.L_CallList.Items[L].L_TimeCall) ;
+       strngrd1.Cells[3,1+L]:= GetTypeCall( FusrObj.L_CallList.Items[L].L_CallType) ;
+     end;
+
+
+
+end;
+
+end.

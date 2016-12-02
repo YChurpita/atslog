@@ -1,0 +1,211 @@
+object ExtLineForm: TExtLineForm
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu]
+  Caption = #1042#1085#1077#1096#1085#1080#1077' '#1051#1080#1085#1080#1080
+  ClientHeight = 430
+  ClientWidth = 313
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  Icon.Data = {
+    0000010001001010100000000000280100001600000028000000100000002000
+    00000100040000000000C0000000000000000000000000000000000000000000
+    000000008000008000000080800080000000800080008080000080808000C0C0
+    C0000000FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF000000
+    000000000000000000000000000000F0F0F0F0F00F0000000000000000000000
+    B000000B000000F00B0000B00F00000000B00B00000000F0000BB0000F000000
+    000BB000000000F000B00B000F0000000B0000B0000000F0B000000B0F000000
+    00000000000000F0F0F0F0F00F0000000000000000000000000000000000FFFF
+    0000FFFF0000D55B0000F7EF0000E3C70000D18B0000F81F0000DC3B0000FC3F
+    0000D81B0000F18F0000C3C30000F7EF0000D55B0000FFFF0000FFFF0000}
+  OldCreateOrder = False
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object pnl1: TPanel
+    Left = 0
+    Top = 403
+    Width = 313
+    Height = 27
+    Align = alBottom
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 0
+    object btn1: TBitBtn
+      Left = 237
+      Top = 1
+      Width = 75
+      Height = 25
+      Align = alRight
+      Caption = #1042#1099#1093#1086#1076
+      TabOrder = 0
+      OnClick = btn1Click
+      ExplicitLeft = 216
+      ExplicitTop = 0
+    end
+  end
+  object cxgrd1: TcxGrid
+    Left = 0
+    Top = 0
+    Width = 313
+    Height = 403
+    Align = alClient
+    TabOrder = 1
+    ExplicitLeft = -18
+    ExplicitTop = -156
+    ExplicitWidth = 331
+    ExplicitHeight = 586
+    object cxgrdbtblvwGrid1DBTableView1: TcxGridDBTableView
+      Navigator.Visible = True
+      DataController.DataSource = DMain.ExtLinesUDS
+      DataController.DetailKeyFieldNames = 'intnumber'
+      DataController.Summary.DefaultGroupSummaryItems = <>
+      DataController.Summary.FooterSummaryItems = <>
+      DataController.Summary.SummaryGroups = <>
+      Styles.StyleSheet = cxgrdtblvwstylshtGridTableViewStyleSheetWindowsStandard
+      object cxgrdbclmnGrid1DBTableView1line: TcxGridDBColumn
+        Caption = #1050#1086#1076' '#1083#1080#1085#1080#1080
+        DataBinding.FieldName = 'line'
+        Width = 97
+      end
+      object cxgrdbclmnGrid1DBTableView1name: TcxGridDBColumn
+        Caption = #1053#1086#1084#1077#1088' '#1083#1080#1085#1080#1080
+        DataBinding.FieldName = 'name'
+        Width = 159
+      end
+    end
+    object cxgrdlvlGrid1Level1: TcxGridLevel
+      GridView = cxgrdbtblvwGrid1DBTableView1
+    end
+  end
+  object cxstylrpstry1: TcxStyleRepository
+    Left = 56
+    Top = 136
+    PixelsPerInch = 96
+    object cxstyl12: TcxStyle
+    end
+    object cxstyl1: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = clWhite
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      TextColor = clBlack
+    end
+    object cxstyl2: TcxStyle
+      AssignedValues = [svColor, svTextColor]
+      Color = 13160660
+      TextColor = clBlack
+    end
+    object cxstyl3: TcxStyle
+      AssignedValues = [svColor, svTextColor]
+      Color = clWhite
+      TextColor = clBlack
+    end
+    object cxstyl4: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = 13160660
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      TextColor = clBlack
+    end
+    object cxstyl5: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = clGray
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      TextColor = 13160660
+    end
+    object cxstyl6: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = 10841658
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      TextColor = clWhite
+    end
+    object cxstyl7: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = 13160660
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      TextColor = clBlack
+    end
+    object cxstyl8: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = 6956042
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      TextColor = clWhite
+    end
+    object cxstyl9: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = 13160660
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      TextColor = clBlack
+    end
+    object cxstyl10: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = clWhite
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      TextColor = 6956042
+    end
+    object cxstyl11: TcxStyle
+      AssignedValues = [svColor, svFont, svTextColor]
+      Color = 6956042
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      TextColor = clWhite
+    end
+    object cxgrdtblvwstylshtGridTableViewStyleSheetWindowsStandard: TcxGridTableViewStyleSheet
+      Caption = 'Windows Standard'
+      Styles.Content = cxstyl1
+      Styles.ContentEven = cxstyl2
+      Styles.ContentOdd = cxstyl3
+      Styles.Inactive = cxstyl8
+      Styles.Selection = cxstyl11
+      Styles.Footer = cxstyl4
+      Styles.Group = cxstyl5
+      Styles.GroupByBox = cxstyl6
+      Styles.Header = cxstyl7
+      Styles.Indicator = cxstyl9
+      Styles.Preview = cxstyl10
+      BuiltIn = True
+    end
+  end
+end

@@ -1,0 +1,102 @@
+unit MainDm;
+
+interface
+
+uses
+  System.SysUtils,
+  System.Classes,
+  DBAccess,
+  Uni,
+  Data.DB,
+  MemDS,
+  UniDacVcl,
+  UniProvider,
+  MySQLUniProvider;
+
+type
+  TDMain = class(TDataModule)
+    UniConnection1: TUniConnection;
+    MySQLUniProvider1: TMySQLUniProvider;
+    UniConnectDialog1: TUniConnectDialog;
+    CalsUQ: TUniQuery;
+    CallsUTrRead: TUniTransaction;
+    CallsUDs: TUniDataSource;
+    CallsUTrWrite: TUniTransaction;
+    CountryUQ: TUniQuery;
+    CountryUniTrRead: TUniTransaction;
+    Countryds: TUniDataSource;
+    CountryUniTrWrite: TUniTransaction;
+    ExtLinesUQ: TUniQuery;
+    ExtLinesUTrRead: TUniTransaction;
+    ExtLinesUDS: TUniDataSource;
+    ExtLinesUTWrite: TUniTransaction;
+    IntrPhUQ: TUniQuery;
+    IntrPhUTrRead: TUniTransaction;
+    IntrPhUDS: TUniDataSource;
+    IntrPhUTrWrite: TUniTransaction;
+    TownsUQ: TUniQuery;
+    TownsUiTrRead: TUniTransaction;
+    TownsUDS: TUniDataSource;
+    TownsUTrWrite: TUniTransaction;
+    UsersUQ: TUniQuery;
+    UsersUTrRead: TUniTransaction;
+    UsersUDS: TUniDataSource;
+    UsersUTrWrite: TUniTransaction;
+    procedure UniConnection1BeforeConnect(Sender: TObject);
+    procedure UniConnection1BeforeDisconnect(Sender: TObject);
+    procedure DataModuleCreate(Sender: TObject);
+  private
+    procedure OpenQuary;
+    procedure CloseQuary;
+
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DMain: TDMain;
+
+implementation
+ uses main ;
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+procedure TDMain.CloseQuary;
+begin
+    CalsUQ.Open:=True ;
+    CountryUQ.Open:=True ;
+    ExtLinesUQ.Open:=True ;
+    IntrPhUQ.Open:=True ;
+    TownsUQ.Open:=True ;
+    UsersUQ.Open:=True ;
+end;
+
+procedure TDMain.DataModuleCreate(Sender: TObject);
+begin
+    CalsUQ.Open:=false ;
+    CountryUQ.Open:=false ;
+    ExtLinesUQ.Open:=false ;
+    IntrPhUQ.Open:=false ;
+    TownsUQ.Open:=false ;
+    UsersUQ.Open:=false ;
+
+end;
+
+procedure TDMain.OpenQuary;
+begin
+
+end;
+
+procedure TDMain.UniConnection1BeforeConnect(Sender: TObject);
+begin
+  MainForm.StatusBar1.Panels[0].Text:='Связь с сервером установлена!' ;
+end;
+
+procedure TDMain.UniConnection1BeforeDisconnect(Sender: TObject);
+begin
+  MainForm.StatusBar1.Panels[0].Text:='Связь с сервером разорвана!' ;
+end;
+
+end.

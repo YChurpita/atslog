@@ -1,0 +1,57 @@
+unit PhParser;
+
+interface
+ uses
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  Vcl.StdCtrls,
+  Vcl.Buttons,
+  Vcl.ExtCtrls,
+  RegExpr,
+//  DBAccess,
+  Uni,
+ // Data.DB,
+  MemDS,
+//  UniDacVcl,
+//  UniProvider,
+  MySQLUniProvider ;
+
+  type TphParser =class(TObject)
+  protected
+  Frhp1: TRegExpr;
+  Frhp2: TRegExpr;
+  private
+
+  public
+  constructor CREATE;
+  destructor  DESTROY;
+
+  end;
+
+
+implementation
+
+
+constructor TphParser.CREATE;
+begin
+  inherited;
+  Frhp1:= TRegExpr.Create;
+  Frhp2:= TRegExpr.Create;
+end;
+
+destructor TphParser.DESTROY;
+begin
+  Frhp1.Destroy;
+  Frhp2.Destroy;
+  inherited;
+end;
+
+
+end.

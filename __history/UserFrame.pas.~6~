@@ -1,0 +1,49 @@
+unit UserFrame;
+
+interface
+
+uses
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  UsrObj, Vcl.Grids, Vcl.StdCtrls;
+
+type
+  TFrameUsr = class(TFrame)
+    grp1: TGroupBox;
+    strngrd1: TStringGrid;
+  private
+  FusrObj:TUsrObj ;
+    { Private declarations }
+  public
+
+  CONSTRUCTOR CREATE;
+  destructor destroy;
+    { Public declarations }
+  end;
+
+implementation
+
+{$R *.dfm}
+
+constructor  TFrameUsr.CREATE;
+begin
+  inherited;
+
+end;
+
+destructor  TFrameUsr.DESTROY;
+begin
+
+  inherited;
+end;
+
+
+
+end.

@@ -1,0 +1,7 @@
+object FrameUsr: TFrameUsr
+  Left = 0
+  Top = 0
+  Width = 589
+  Height = 426
+  TabOrder = 0
+end

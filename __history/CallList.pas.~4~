@@ -1,0 +1,191 @@
+unit CallList;
+
+interface
+  uses
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Dialogs,
+  Vcl.StdCtrls,
+  Vcl.ExtCtrls,
+  Contnrs,
+  Controls,
+
+  CallObj  ;
+
+   type  TCallList = class(TObjectList)
+
+   private
+
+
+   protected
+   procedure Put(Index: Integer; Item: TphClall); virtual;
+   function Get(Index: Integer): TphClall; virtual;
+   procedure w_OwnsObjects(at: boolean); virtual;
+   procedure  AddCall(const aval:TphClall);
+
+  public
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    property Items[Index: Integer]:TphClall read Get write Put;
+    // С помощью Items можно получить доступ к объектам, хранящимся в списке.
+    // Items является свойством по умолчанию, а значит следующие две строки равносильны:
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    procedure Sort(Compare: TListSortCompare); virtual;
+    // Метод сортирует элементы списка.
+    // В функции TListSortCompare должно быть указано, как следует располагать объекты в списке:
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    function Add(Obj: TphClall): Integer; virtual;
+    // Добавляет новый объект в конец списка, увеличивает свойство Count на единицу и,
+    // если необходимо, выделяет память, увеличивая значение Capacity (мы рассмотрим позже это свойство).
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    procedure Insert(Index: Integer; Obj: TphClall); virtual;
+    // Вставляет новый объект на указанную позицию, сдвигая стоящий на этом месте элемент, а также все следующие за ним элементы.
+    // Index – позиция, на которую вставляется объект, указанный в AObject.
+    // При необходимости для нового элемента выделяется память.
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    procedure delete(Index: Integer); virtual;
+    // Отличается от Extract тем, что в качестве параметра передается не имя, а индекс.
+    // Если OwnsObjects равен true, то сразу же вызывается метод Free.
+    // Чтобы вручную освободить память, которая использовалась для хранения объекта, достаточно уменьшить параметр Capacity.
+    // Индексы элементов и Count изменяются так же, как и у Extract.
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    procedure Clear; virtual;
+    // Этот метод удаляет все элементы из списка, освобождает память,
+    // используемую для хранения объектов, а также присваивает свойству Capacity значение 0.
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    function Getitems(Index: Integer): TphClall; virtual;
+    // Ищет по индексу возвращает объект
+    procedure setitems(Index: Integer; const Value: TphClall); virtual;
+    // Записать объект по определенному индексу
+    function first: TphClall; virtual; // Возвращает первый элемент списка.
+    function last: TphClall; virtual; // Возвращает последний элемент списка.
+    function IndexOf(AObject: TphClall): Integer; virtual;
+    procedure Assign(Dest: TPersistent); override;
+  //  procedure ResizeMessageWidth(const aRes:integer);
+    CONSTRUCTOR CREATE;
+    destructor destroy;
+
+  end;
+implementation
+//------------------------------------------------------------------------------
+constructor TCallList.CREATE;
+begin
+  inherited ;
+end;
+//------------------------------------------------------------------------------
+destructor TCallList.destroy;
+begin
+  inherited  ;
+end;
+//------------------------------------------------------------------------------
+procedure  TCallList.Put(Index: Integer; Item: TphClall);
+begin
+  if Item is TphClall then
+    inherited Items[Index] := Item;
+end;
+//------------------------------------------------------------------------------
+function  TCallList.Get(Index: Integer): TphClall;
+begin
+  if Count - 1 >= Index then // проверка на правильность Index-а,иначе
+    Result := TphClall(inherited Items[Index]) // получим исключение
+  else
+    Result := nil;
+end;
+//------------------------------------------------------------------------------
+procedure  TCallList.w_OwnsObjects(at: boolean);
+begin
+  inherited OwnsObjects := at;
+end;
+
+
+//------------------------------------------------------------------------------
+procedure  TCallList.Sort(Compare: TListSortCompare);
+begin
+  inherited Sort(Compare);
+end;
+//------------------------------------------------------------------------------
+function  TCallList.Add(Obj: TphClall): Integer;
+begin
+  if Obj is TphClall  then
+    Result := inherited Add(Obj);
+end;
+//------------------------------------------------------------------------------
+procedure  TCallList.Insert(Index: Integer; Obj: TphClall);
+begin
+  inherited Insert(Index, Obj);
+end;
+//------------------------------------------------------------------------------
+procedure  TCallList.delete(Index: Integer);
+begin
+  inherited delete(Index) ;
+end;
+// ------------------------------------------------------------------------------
+procedure  TCallList.Clear;
+begin
+  inherited Clear;
+end;
+//------------------------------------------------------------------------------
+function  TCallList.Getitems(Index: Integer): TphClall;
+begin
+  // Result :=  (inherited GetItem(index) as TWriterFrame);
+  if Count - 1 >= Index then // проверка на правильность Index-а,иначе
+    Result := TphClall(inherited Items[Index]) // получим исключение
+  else
+    Result := nil;
+end;
+//------------------------------------------------------------------------------
+procedure  TCallList.setitems(Index: Integer; const Value: TphClall);
+begin
+  inherited SetItem(Index, Value);
+end;
+//------------------------------------------------------------------------------
+function  TCallList.first: TphClall; // возвращаем первую позицию
+begin
+  Result := TphClall(inherited first);
+end;
+//------------------------------------------------------------------------------
+ function  TCallList.last: TphClall; // возвращаем последнюю позицию
+begin
+  Result := TphClall(inherited last);
+end;
+//------------------------------------------------------------------------------
+function  TCallList.IndexOf(AObject: TphClall): Integer;
+begin
+  Result := inherited IndexOf(AObject);
+end;
+//------------------------------------------------------------------------------
+procedure TCallList.AddCall(const aval:TphClall);
+var
+n:integer ;
+begin
+   n := Add(TphClall.CREATE);
+        items[n].L_Phone:=aval.L_Phone ;
+        items[n].L_TimeCall:=aval.L_TimeCall ;
+        items[n].L_IntLine:=aval.L_IntLine ;
+        items[n].L_CallType:=aval.L_CallType ;
+
+end;
+
+procedure TCallList.Assign(Dest: TPersistent);
+var
+I:integer ;
+begin
+ I:=0 ;
+    if (Dest is TCallList) then
+      begin
+        Clear ;
+        for I := 0 to TCallList(Dest).Count -1 do
+          begin
+            AddCall(TCallList(Dest).Items[I]) ;
+          end;
+      end
+    else
+    inherited Assign(Dest);
+end;
+
+//------------------------------------------------------------------------------
+
+
+end.
